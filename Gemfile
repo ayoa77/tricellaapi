@@ -22,6 +22,13 @@ gem 'bcrypt', '~> 3.1.7'
 # Use jwt to handle json web tokens
 gem 'jwt'
 
+# Use wheneverizer to handle reminders and background job
+gem 'whenever', :require => false
+# Use ice_cube to set the times and dates for reminders
+gem 'ice_cube'
+# Use chronic for ambiguous times entered
+gem 'chronic'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
