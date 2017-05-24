@@ -10,20 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523081405) do
+ActiveRecord::Schema.define(version: 20170524100923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "alerts", force: :cascade do |t|
+    t.time     "pill_time"
+    t.time     "tracker_time"
+    t.string   "family",       default: [],              array: true
+    t.integer  "pill_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["pill_id"], name: "index_alerts_on_pill_id", using: :btree
+  end
+
   create_table "pills", force: :cascade do |t|
     t.string   "name"
     t.string   "reminder"
-    t.integer  "trackers",        default: [],              array: true
-    t.time     "remind_trackers"
+    t.string   "trackers"
+    t.string   "remind_trackers"
     t.datetime "time_taken"
     t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["user_id"], name: "index_pills_on_user_id", using: :btree
   end
 
